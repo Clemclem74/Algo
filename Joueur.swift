@@ -18,6 +18,9 @@ protocol JoueurProtocol: {
     
     // Set_Name: Joueur*String -> Joueur
     // Change le nom d'un joueur
+    //Pre: Le nom ne doit pas etre vide.
+    //Post: On change le nom du joueur. Si le nom est vide on ne fait rien
+    @discardableResult
     mutating func Set_Name(nom:String)->Self
 
     // Set_Hand: Joueur*Hand -> Joueur
