@@ -1,22 +1,22 @@
 protocol JoueurProtocol: {
 
     // init:  String -> Joueur
-    // création d'un joueur, un joueur est définie par un nom, une main, une reserve et une orientation. A l'initialisation sa reverve est vide et sa main est composé de 4 pieces.
+    // crÃ©ation d'un joueur, un joueur est dÃ©finie par un nom, une main, une reserve et une orientation. A l'initialisation sa reverve est vide et sa main est composÃ© de 4 pieces.
     init(nom:String) 
     
-    // Give_hand: Joueur -> Hand
-    // retourne la main qu'un joueur possède (les pieces qu'il a sur la plateau)
-    func Give_hand()->Hand
+    // Give_Hand: Joueur -> Hand
+    // retourne la main qu'un joueur possÃ¨de (les pieces qu'il a sur la plateau)
+    func Give_Hand()->Hand
     
     // Give_reserve: Joueur -> Reserve
     // retourne la reserve d'un joueur (les pieces qu'il a capturer)
     func Give_Reserve()->Reserve
     
-    // Give_name: Joueur -> String
+    // Give_Name: Joueur -> String
     // retourne le nom d'un joueur
-    func Give_name()->String
+    func Give_Name()->String
     
-    // Set_name: Joueur*String -> Joueur
+    // Set_Name: Joueur*String -> Joueur
     // Change le nom d'un joueur
     mutating func Set_Name(nom:String)->Self
 
