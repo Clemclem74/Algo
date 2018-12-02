@@ -1,42 +1,42 @@
-func deplacer(plat:Plateau,joueur:Joueur)->Plateau
-func saisir_piece_a_deplacer()->Piece
-func saisir_position_finale()->Position
-func saisir_piece_a_parachuter()->Piece
+func Deplacer(plat:Plateau,joueur:Joueur)->Plateau
+func Saisir_Piece_A_Deplacer()->Piece
+func Saisir_Position_Finale()->Position
+func Saisir_Piece_A_Parachuter()->Piece
 
 
 
-func saisir_position_finale()->Position {
+func Saisir_Position_Finale()->Position {
     var pos = Position()
     var x : String?
     var y : String?
-    print("A quelle position souhaitez vous déplacer la piece ?")
+    print("A quelle position souhaitez vous dÃ©placer la piece ?")
     repeat {
         x = readLine()
         y = readLine()
     } while(x != nil && y != nil)
-    pos.ChangePosition(x,y)
+    pos.Change_Position(x,y)
     return pos
     
     
 }
 
-func demander_action()->String {
-    print("Voulez vous vous déplacer ou parachuter une piece ? ")
+func Demander_Action()->String {
+    print("Voulez vous vous dÃ©placer ou parachuter une piece ? ")
     var res = readLine()
     while res == nil || (res != "Deplacer"  && res != "Parachuter"){
         print("Choix non possible")
         res = readLine()
     }
     guard let ret : String = res else {
-        fatalError("Problème lors du choix de l'action")
+        fatalError("ProblÃ¨me lors du choix de l'action")
     }
     return ret
 }
 
 
-func saisir_piece_a_deplacer()->Piece{
+func Saisir_Piece_A_Deplacer()->Piece{
     var piece = Piece()
-    print("Quelle pièce voulez vous déplacer ?")
+    print("Quelle piÃ¨ce voulez vous dÃ©placer ?")
     return piece
 }
 
@@ -55,13 +55,13 @@ var tour : Int = 1
 var positionFinale : Position
 var tour_effectue : Bool 
 var fin_de_partie : Bool = false
-    //Gestion de la déclaration du nom des joueurs. Si le nom reste vide on attribuera Joueur 1 et Joueur 2
+    //Gestion de la dÃ©claration du nom des joueurs. Si le nom reste vide on attribuera Joueur 1 et Joueur 2
 print("Quel est le nom du premier joueur ?")
 var l : String? = readLine()
 guard let l1 = l else {
     plat.j1.ChangeName("Joueur 1")
 }
-print("Quel est le nom du deuxième joueur ?")
+print("Quel est le nom du deuxiÃ¨me joueur ?")
 l = readLine()
 guard let l2 = l else {
     plat.j2.ChangeName("Joueur 2")
@@ -71,7 +71,7 @@ plat.j2.name = l2
 
 while !fin_de_partie {
     tour_effectue=false
-    //Changement du joueur et donc de l'adversaire à chaque tour 
+    //Changement du joueur et donc de l'adversaire Ã  chaque tour 
     if tour%2==1{
         var joueur:Joueur = plat.j1
         var adversaire:Joueur = plat.j2
@@ -80,25 +80,25 @@ while !fin_de_partie {
         var joueur:Joueur = plat.j2
         var adversaire:Joueur = plat.j1
     }
-    //Vérification que la partie n'est pas finie, donc les deux joueurs possèdent un roi et qu'il n'est pas sur la dernière ligne.
+    //VÃ©rification que la partie n'est pas finie, donc les deux joueurs possÃ¨dent un roi et qu'il n'est pas sur la derniÃ¨re ligne.
     if(plat.fin()!= nil){
         tour_effeectue=true
         fin_de_partie=true
     }
-    //On crée le while pour vérifier que le tour est effectué (créé dans des cas où le joueur veut avoir accès à sa réserve mais qu'elle est vide), on redemandera alors le choix du début
+    //On crÃ©e le while pour vÃ©rifier que le tour est effectuÃ© (crÃ©Ã© dans des cas oÃ¹ le joueur veut avoir accÃ¨s Ã  sa rÃ©serve mais qu'elle est vide), on redemandera alors le choix du dÃ©but
     while(!tour_effectue){
-        //on affiche le plateau et la réserve pour demander à l'utilisateur ce qu'il veut faire
+        //on affiche le plateau et la rÃ©serve pour demander Ã  l'utilisateur ce qu'il veut faire
         afficherPlateau(plat)
         afficherReserve(joueur)
         action=demander_action()
         
-        //Si le joueur veut se déplacer
+        //Si le joueur veut se dÃ©placer
         if action == "Deplacer" {
             do{
                 piece = saisir_piece_a_deplacer()
                 positionFinale = saisir_position_finale()
             } while(!est_deplacement_possible(piece,positionFinale))
-            //Un deplacement n'est pas possible si la piece sort du plateau, si une piece nous appartenant est à cette place ou si ce deplacement n'est pas autorisé par les caractéristiques de la piece
+            //Un deplacement n'est pas possible si la piece sort du plateau, si une piece nous appartenant est Ã  cette place ou si ce deplacement n'est pas autorisÃ© par les caractÃ©ristiques de la piece
             
             if (adversaire.GiveHand.avoir_piece(positionFinale)){
                 //capturer une piece
@@ -145,6 +145,6 @@ while !fin_de_partie {
     tour = tour + 1
 }
 let joueur_gagnant=plat.fin()
-print("Le joueur %s a gagné",joueur_gagnant.GiveName())
+print("Le joueur %s a gagnÃ©",joueur_gagnant.GiveName())
 exit()
 }
