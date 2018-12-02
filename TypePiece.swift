@@ -6,7 +6,11 @@ protocol TypePieceProtocol:{
     
     //Give_Nom: TypePiece -> String
     //Donne le nom du type de la piece
-    func Give_nom()->String
+    func Give_Nom()->String
+    
+    //Set_Nom: TypePiece*(String|Vide) -> TypePiece
+    //Modifie le nom du type de la piece
+    mutating func Set_Nom(nom:String?)->Self
     
     //Give_Deplacement: TypePiece -> Deplacements
     //Donne les deplacements possibles d'un type de piece
