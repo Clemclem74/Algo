@@ -9,5 +9,5 @@ protocol PositionProtocol:{
     //Pre: posfin est soit vide soit sur le plateau
     //Post: La position est changee,si le paramettre ne correspond pas a une position sur le plateau ou si la position donnee n'est pas vide on ne fait rien.
     @discardableResult
-    mutating func ChangePosition(posfin:Position)->Self
+    mutating func Change_Position(posfin:Position)->Self
 }
