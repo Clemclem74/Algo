@@ -20,7 +20,7 @@ protocol JoueurProtocol: {
     // Change le nom d'un joueur
     mutating func Set_Name(nom:String)->Self
 
-         // Set_Hand: Joueur*Hand -> Joueur
+    // Set_Hand: Joueur*Hand -> Joueur
     // Change la main d'un joueur
     mutating func Set_Hand(newHand:Hand?)->Self
 

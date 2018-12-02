@@ -6,9 +6,9 @@ protocol PieceProtocol:{
     init()
     
     //Set_Nom: Piece*TypePiece -> Piece
-    //Modifie le nom (Type) d’une piece
+    //Modifie le nom (Type) d'une piece
     //Pre: type est un Type existant
-    //Post: On change le type de la piece, si le type n’existe pas on ne fait rien
+    //Post: On change le type de la piece, si le type n'existe pas on ne fait rien
     @discardableResult
     mutating func Set_Nom(type:TypePiece)->Self
     
@@ -47,7 +47,7 @@ protocol PieceProtocol:{
     func EstKodama()->Bool
 
     //EstKodamaSamurai: Piece -> Bool
-    //Regarde si la piece est un Kodama samuraï
+    //Regarde si la piece est un Kodama samuraE
     func EstKodamaSamurai()->Bool
 
     //EstRoi: Piece -> Bool
@@ -55,22 +55,22 @@ protocol PieceProtocol:{
     func EstRoi()->Bool
 
     //TransformerKodamaSamurai: Piece -> Piece
-    //On transforme le kodama en kodama samuraï
+    //On transforme le kodama en kodama samuraE
     //Pre: La piece doit être un kodama et doit etre au fond du plateau et ne pas avoir ete parachutee directement au fond
-    //Post: On transforme le kodama en kodama samouraï. Si les preconditions ne sont pas remplies on ne fait rien.
+    //Post: On transforme le kodama en kodama samouraE Si les preconditions ne sont pas remplies on ne fait rien.
     @discardableResult
     mutating func TransformerKodamaSamurai()->Self
 
     //TransformerKodama: Hand*Piece -> Hand
-    //On transforme le kodama samuraï en kodama
+    //On transforme le kodama samuraEen kodama
     //Pre: La piece doit être un kodama et doit etre au fond du plateau et ne pas avoir ete parachutee directement au fond
-    //Post: On transforme le kodama samouraï en kodama. Si les preconditions ne sont pas remplies on ne fait rien.
+    //Post: On transforme le kodama samouraEen kodama. Si les preconditions ne sont pas remplies on ne fait rien.
     @discardableResult
     mutating func TransformerKodama(piece:Piece)->Self
 
     //Deplacer_piece: Piece*Position -> Piece
     //On deplace une piece jusqu'a une position finale.
-    //Pre: La Position finale correspond à une position sur laquelle la piece peut se deplacer 
+    //Pre: La Position finale correspond Eune position sur laquelle la piece peut se deplacer 
     //Post: La piece est deplacee. Si la piece ne peut pas se deplacer sur la position finale alors rien n'est fait
     @discardableResult
     mutating func Deplacer_piece(PosFin:Position)->Self
