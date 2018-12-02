@@ -13,66 +13,66 @@ protocol PieceProtocol:{
     mutating func Set_Nom(type:TypePiece)->Self
     
     //Set_Position: Piece*(Position|Vide) -> Piece
-    //Modifie la position d’une piece
-    //Pre: La position de la piece doit être sur le plateau
+    //Modifie la position dç½®ne piece
+    //Pre: La position de la piece doit é»Žre sur le plateau
     //Post: Si la position est sur le plateau on modifie sa position sinon on ne fait rien
     @discardableResult
     mutating func Set_Position(newPos:Position?)->Self
 
     //Set_Orientation: Piece*(Orientation|Vide) -> Piece
-    //Modifie l'orientation d’une piece
+    //Modifie l'orientation dç½®ne piece
     @discardableResult
     mutating func Set_Orientation(newOrient:Orientation?)->Self
 
     //Give_Nom: Piece -> TypePiece
-    //Retourne le nom (Type) d’une piece
+    //Retourne le nom (Type) dç½®ne piece
     func Give_Nom()->TypePiece
     
     //Give_Position: Piece -> (Position|Vide)
-    //Retourne la position d’une piece
-    //Pre: La piece doit être sur le plateau
+    //Retourne la position dç½®ne piece
+    //Pre: La piece doit é»Žre sur le plateau
     //Post: Si la piece est sur le plateau on retourne sa position sinon on retourne Vide(Si la piece est dans la reserve par exemple)
     func Give_Position()->?Position
 
     //Give_Orientation: Piece -> Orientation
-    //Retourne l'orientation d’une piece
+    //Retourne l'orientation dç½®ne piece
     func Give_Orientation()->Orientation
 
-    //PieceAuFond: Piece -> Bool
+    //Piece_Au_Fond: Piece -> Bool
     //Regarde si la piece est au fond
-    func PieceAuFond()->Bool
+    func Piece_Au_Fond()->Bool
 
-    //EstKodama: Piece -> Bool
+    //Est_Kodama: Piece -> Bool
     //Regarde si la piece est un Kodama
-    func EstKodama()->Bool
+    func Est_Kodama()->Bool
 
-    //EstKodamaSamurai: Piece -> Bool
-    //Regarde si la piece est un Kodama samuraE
-    func EstKodamaSamurai()->Bool
+    //Est_Kodama_Samurai: Piece -> Bool
+    //Regarde si la piece est un Kodama samuraãƒ»
+    func Est_Kodama_Samurai()->Bool
 
-    //EstRoi: Piece -> Bool
+    //Est_Roi: Piece -> Bool
     //Regarde si la piece est un Roi
-    func EstRoi()->Bool
+    func Est_Roi()->Bool
 
-    //TransformerKodamaSamurai: Piece -> Piece
-    //On transforme le kodama en kodama samuraE
-    //Pre: La piece doit être un kodama et doit etre au fond du plateau et ne pas avoir ete parachutee directement au fond
-    //Post: On transforme le kodama en kodama samouraE Si les preconditions ne sont pas remplies on ne fait rien.
+    //Transformer_Kodama_Samurai: Piece -> Piece
+    //On transforme le kodama en kodama samurai
+    //Pre: La piece doit etre un kodama et doit etre au fond du plateau et ne pas avoir ete parachutee directement au fond
+    //Post: On transforme le kodama en kodama samourai Si les preconditions ne sont pas remplies on ne fait rien.
     @discardableResult
-    mutating func TransformerKodamaSamurai()->Self
+    mutating func Transformer_Kodama_Samurai()->Self
 
-    //TransformerKodama: Hand*Piece -> Hand
-    //On transforme le kodama samuraEen kodama
-    //Pre: La piece doit être un kodama et doit etre au fond du plateau et ne pas avoir ete parachutee directement au fond
-    //Post: On transforme le kodama samouraEen kodama. Si les preconditions ne sont pas remplies on ne fait rien.
+    //Transformer_Kodama: Hand*Piece -> Hand
+    //On transforme le kodama samuraãƒ»en kodama
+    //Pre: La piece doit etre un kodama et doit etre au fond du plateau et ne pas avoir ete parachutee directement au fond
+    //Post: On transforme le kodama samourai en kodama. Si les preconditions ne sont pas remplies on ne fait rien.
     @discardableResult
-    mutating func TransformerKodama(piece:Piece)->Self
+    mutating func Transformer_Kodama(piece:Piece)->Self
 
-    //Deplacer_piece: Piece*Position -> Piece
+    //Deplacer_Piece: Piece*Position -> Piece
     //On deplace une piece jusqu'a une position finale.
-    //Pre: La Position finale correspond Eune position sur laquelle la piece peut se deplacer 
+    //Pre: La Position finale correspond ãƒ»une position sur laquelle la piece peut se deplacer 
     //Post: La piece est deplacee. Si la piece ne peut pas se deplacer sur la position finale alors rien n'est fait
     @discardableResult
-    mutating func Deplacer_piece(PosFin:Position)->Self
+    mutating func Deplacer_Piece(PosFin:Position)->Self
 
 }
