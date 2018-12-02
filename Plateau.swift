@@ -17,30 +17,30 @@ protocol PlateauProtocol:Sequence{
     //retourne le joueur 2 du plateau
     func Give_Joueur2()->Joueur
     
-    //EstCaseVide: Plateau*Position -> (Bool|Vide)
+    //Est_Case_Vide: Plateau*Position -> (Bool|Vide)
     //Verifie si une position est vide ou pas
     //Pre: Position est dans le plateau (ne depasse pas la hauteur ou la largeur)
     //Post: Retourne Vrai si il n'y a pas de piece a cette position, faux si la case est occupee. Si jamais la position entree en parametre n'est pas sur le plateau on retourne Vide.
-    func EstCaseVide(pos:Position)->?Bool
+    func Est_Case_Vide(pos:Position)->?Bool
     
-    //EstDeplacementPossible: Plateau*Piece*Position
+    //Est_Deplacement_Possible: Plateau*Piece*Position
     //Verifie si un piece peut se deplacer a un position donnee
     //Pre:La position est sur la plateau
     //Pre:La position n'est pas occupe par une piece du meme joueur
     //Pre:Le deplacement est permi par le type de la piece
     //Post:Si le deplacement est permis on retourne vrai sinon on retourne faux
-    func EstDeplacementPossible(piece:Piece,pos:Position)->Bool
+    func Est_Deplacement_Possible(piece:Piece,pos:Position)->Bool
     
-    //PiecePosition: Plateau*Position->(Piece|Vide)
+    //Piece_Position: Plateau*Position->(Piece|Vide)
     //Ressort un piece a partir d'une position du plateau
     //Pre:Il y a une piece sur cette position
     //Pre:La position est dans le plateau
     //Post: Retourne la piece. Si jamais la position n'est pas sur la plateau ou si il n'y a pas de piece a cette position on retourne Vide.
-    func PiecePosition(pos:Position)->?Piece
+    func Piece_Position(pos:Position)->?Piece
     
-    //fin: Plateau -> (Joueur | Vide)
-        //Regarde si la partie est finie.
-        //Post: Il faut que l'un des deux joueurs n'ai plus son roi ou que le roi d'un des deux joueurs soit sur la derniere case pour retourner un joueur gagnant. Sinon on retourne Vide 
-        func fin()->Joueur?
+    //Fin: Plateau -> (Joueur | Vide)
+    //Regarde si la partie est finie.
+    //Post: Il faut que l'un des deux joueurs n'ai plus son roi ou que le roi d'un des deux joueurs soit sur la derniere case pour retourner un joueur gagnant. Sinon on retourne Vide 
+    func Fin()->Joueur?
 }
 
