@@ -47,7 +47,7 @@ func Ajouter_Piece_Test()->Int{
     do {
         try {
             Ajouter_Piece(main,piece_plateau,(1,1))
-            print("Test si une piece qui a une position peux etre ajoute a echoue")
+            print("Test si une piece qui a une position peut etre ajoute a echoue")
             ret+=1
         }
     }

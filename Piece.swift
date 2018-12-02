@@ -10,7 +10,7 @@ protocol PieceProtocol:{
     //Pre: type est un Type existant
     //Post: On change le type de la piece, si le type n'existe pas on ne fait rien
     @discardableResult
-    mutating func Set_Nom(type:TypePiece)->Self
+    mutating func Set_Type(type:TypePiece)->Self
     
     //Set_Position: Piece*(Position|Vide) -> Piece
     //Modifie la position d置ne piece
