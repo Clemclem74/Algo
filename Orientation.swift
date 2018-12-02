@@ -8,7 +8,7 @@ protocol OrientationProtocol:{
     //Pre: orientfin est soit vide soit une orientation existante (Nord/Sud par exemple)
     //Post: L'orientation est changee,si le paramettre ne correspond pas a une orientation existante ou si l'orientation donnee n'est pas vide on ne fait rien.
     @discardableResult
-    mutating func ChangeOrientation(orientfin:Orientation)->Self
+    mutating func Change_Orientation(orientfin:Orientation)->Self
 }
 
 
