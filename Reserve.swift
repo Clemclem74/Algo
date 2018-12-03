@@ -42,8 +42,8 @@ protocol ReserveProtocol:Sequence{
     @discardableResult
     mutating func Supprimer_Piece(piece:Piece)->Self
 
-    // makeIteratorTypePiece : Reserve -> IteratorTypePiece
-    // cree un iterateur sur la collection dans l'odre (?Comment on les tries)
-    func makeIteratorTypePiece()->IteratorPiece
+    // makeIteratorTypePiece : Reserve -> IteratorPiece
+    // cree un iterateur sur la collection
+    func makeIteratorPiece()->IteratorPiece
     
 }
