@@ -11,10 +11,12 @@ protocol PlateauProtocol:Sequence{
     
     //Give_Joueur1: Plateau -> Joueur
     //retourne le joueur 1 du plateau
+    //Post: On a le Joueur1
     func Give_Joueur1()->Joueur
     
     //Give_Joueur1: Plateau -> Joueur
     //retourne le joueur 2 du plateau
+    //Post: On a le Joueur2
     func Give_Joueur2()->Joueur
     
     //Set_Joueur1: Plateau -> Joueur
