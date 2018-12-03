@@ -1,24 +1,26 @@
+import Foundation
+
+
 func Deplacer(plat:Plateau,joueur:Joueur)->Plateau
-func Saisir_Piece_A_Deplacer()->Piece
-func Saisir_Position_Finale()->Position
-func Saisir_Piece_A_Parachuter()->Piece
+
+
+
 
 
 
 func Saisir_Position_Finale()->Position {
     var pos = Position()
-    var x : String?
-    var y : String?
+    var x : Int
+    var y : Int
     print("A quelle position souhaitez vous déplacer la piece ?")
     repeat {
-        x = readLine()
-        y = readLine()
-    } while(x != nil && y != nil)
+        x = Int(readLine() ?? "") ?? -1 //Force la saisie d'un entier et met la valeur -1 si ce n'en est pas un
+        y = Int(readLine() ?? "") ?? -1 //Force la saisie d'un entier et met la valeur -1 si ce n'en est pas un
+    }while(x<0 || y<0)
     pos.Change_Position(x,y)
-    return pos
-    
-    
+    return pos 
 }
+
 
 func Demander_Action()->String {
     print("Voulez vous vous déplacer ou parachuter une piece ? ")
@@ -34,14 +36,36 @@ func Demander_Action()->String {
 }
 
 
-func Saisir_Piece_A_Deplacer()->Piece{
-    var piece = Piece()
+func Saisir_Piece_A_Deplacer(main : Hand)->Piece{
+    var piece : Piece?
+    var position = Position()
+    var x : Int
+    var y : Int
     print("Quelle pièce voulez vous déplacer ?")
+    repeat {
+        repeat {
+            x = Int(readLine() ?? "") ?? -1 //Force la saisie d'un entier et met la valeur -1 si ce n'en est pas un
+            y = Int(readLine() ?? "") ?? -1 //Force la saisie d'un entier et met la valeur -1 si ce n'en est pas un
+        }while(x<0 || y<0)
+        position.Change_Position(x,y)
+    }while(!main.Avoir_Piece(position))
+    piece = main.Get_Piece(pos : position)
     return piece
 }
 
 
-
+func Saisir_Piece_A_Parachuter(reserve : Reserve)->Piece{
+    var piece : Piece?
+    var type = TypePiece
+    var nom : String
+    print("Quelle pièce voulez vous parachuter ?")
+    repeat {
+        nom = ReadLine
+        type.Set_Nom(nom:nom)
+    }while(!reserve.Est_Dans_Reserve(nom))
+    piece = reserve.Get_Piece(nom : type)
+    return piece
+}
 
 
 
@@ -95,9 +119,9 @@ while !fin_de_partie {
         //Si le joueur veut se déplacer
         if action == "Deplacer" {
             do{
-                piece = saisir_piece_a_deplacer()
+                piece = saisir_piece_a_deplacer(main : joueur.Give_Hand)
                 positionFinale = saisir_position_finale()
-            } while(!est_deplacement_possible(piece,positionFinale))
+            } while(!plat.est_deplacement_possible(piece,positionFinale))
             //Un deplacement n'est pas possible si la piece sort du plateau, si une piece nous appartenant est à cette place ou si ce deplacement n'est pas autorisé par les caractéristiques de la piece
             
             if (adversaire.GiveHand.avoir_piece(positionFinale)){
@@ -109,7 +133,7 @@ while !fin_de_partie {
                 }
                 joueur.GiveReserve.ajouter_piece(piece_a_capturer)
             }
-            joueur.GiveHand.deplacer_piece(piece,positionFinale)
+            joueur.GiveHand.Deplacer_Piece(piece,positionFinale)
             if estKodama(piece){
                 if (joueur.GiveHand.est_au_fond(piece)){
                     joueur.GiveHand.transformer_KodamaSamourai(piece)
@@ -122,7 +146,7 @@ while !fin_de_partie {
         else if action=="Parachuter"{
             if (!joueur.GiveReserve.est_vide()){
                 do{
-                    piece = saisir_piece_a_parachuter()
+                    piece = saisir_piece_a_parachuter(reserve : joueur.Give_Reserve)
                     positionFinale = saisir_position_finale()
                 } while(!est_vide(positionFinale))
                 //Un parachutage est possible uniquement si la case est vide 
