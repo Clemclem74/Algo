@@ -1,4 +1,12 @@
 import Foundation
+import Hand
+import Joueur
+import Orientation
+import Piece
+import Plateau
+import Position
+import Reserve
+import TypePiece
 
 
 func Deplacer(plat:Plateau,joueur:Joueur)->Plateau
