@@ -1,4 +1,5 @@
 //Position indique l'emplacement d'une carte sur notre Plateau
+//Il est défini comme un couple x,y
 protocol PositionProtocol:{
     //init: -> Position
     //cree un position initialisee a Vide
