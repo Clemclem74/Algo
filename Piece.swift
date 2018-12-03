@@ -13,45 +13,53 @@ protocol PieceProtocol:{
     mutating func Set_Type(type:TypePiece)->Self
     
     //Set_Position: Piece*(Position|Vide) -> Piece
-    //Modifie la position d置ne piece
-    //Pre: La position de la piece doit 黎re sur le plateau
+    //Modifie la position d'une piece
+    //Pre: newPOS doit être sur le plateau
     //Post: Si la position est sur le plateau on modifie sa position sinon on ne fait rien
     @discardableResult
     mutating func Set_Position(newPos:Position?)->Self
 
     //Set_Orientation: Piece*(Orientation|Vide) -> Piece
-    //Modifie l'orientation d置ne piece
+    //Modifie l'orientation d'une piece
+    //Pre: newOrient doit etre une orientation existante (N/S)
+    //Post: L'orientation est changee. Si newOrient n'existe pas on ne fait rien
     @discardableResult
     mutating func Set_Orientation(newOrient:Orientation?)->Self
 
     //Give_Nom: Piece -> TypePiece
-    //Retourne le nom (Type) d置ne piece
+    //Retourne le nom (Type) d'une piece
+    //Post: On a le TypePiece
     func Give_Type()->TypePiece
     
     //Give_Position: Piece -> (Position|Vide)
-    //Retourne la position d置ne piece
-    //Pre: La piece doit 黎re sur le plateau
+    //Retourne la position d'une piece
+    //Pre: La piece doit etre sur le plateau
     //Post: Si la piece est sur le plateau on retourne sa position sinon on retourne Vide(Si la piece est dans la reserve par exemple)
     func Give_Position()->?Position
 
     //Give_Orientation: Piece -> Orientation
-    //Retourne l'orientation d置ne piece
+    //Retourne l'orientation d'une piece
+    //Post: On a l'Orientation de la piece
     func Give_Orientation()->Orientation
 
     //Piece_Au_Fond: Piece -> Bool
     //Regarde si la piece est au fond
+    //Post: Retourne vrai si la piece est au fond, faux sinon
     func Piece_Au_Fond()->Bool
 
     //Est_Kodama: Piece -> Bool
     //Regarde si la piece est un Kodama
+    //Post: Retourne vrai si la piece est un Kodama faux sinon
     func Est_Kodama()->Bool
 
     //Est_Kodama_Samurai: Piece -> Bool
-    //Regarde si la piece est un Kodama samura・
+    //Regarde si la piece est un Kodama samurai
+    //Post: Retourne vrai si la piece est un Kodama samurai faux sinon
     func Est_Kodama_Samurai()->Bool
 
     //Est_Roi: Piece -> Bool
     //Regarde si la piece est un Roi
+    //Post: Retourne vrai si la piece est un Koropokkuru faux sinon
     func Est_Roi()->Bool
 
     //Transformer_Kodama_Samurai: Piece -> Piece
