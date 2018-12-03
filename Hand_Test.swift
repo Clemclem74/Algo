@@ -80,8 +80,35 @@ func Avoir_Piece_Test()->Int{
     return ret
 }
 
+func Get_Piece_Test()->Int{
+    var ret : Int = 0
+    var piece = Piece()
+    var pieceResult = Piece()
+    var main = Hand()
+    main.Ajouter_Piece(piece:piece,(1,1))
+
 
     
+    do {
+        try pieceResult=main.Get_Piece(pos:(-1,-1)){
+        print("Test si le programme fonction lorsque la position ne fait pas partie du plateau: ECHEC")
+        ret+=1
+        }
+    }
+    catch {
+        print("OK si la position n'est pas sur le plateau")
+    }
+    pieceResult=main.Get_Piece(pos:(1,1))
+    if !(pieceResult == piece) {
+          print("Test si le programme fonctionne lorsque la position est bonne: ECHEC")
+          ret+=1
+        }
+    }
+    catch {
+        print("OK si la position est bonne")
+    }
+    return ret
+}
     
 
 func Ajouter_Piece_Test()->Int{
@@ -122,6 +149,15 @@ func Ajouter_Piece_Test()->Int{
     catch {
         print("OK si on essaye d'ajouter une piece en dehors du plateau")
     }
+    main.Ajouter_Piece(piece:piece_sans_position,pos:(3,3))
+    if !main.Avoir_Piece(pos:(3,3)){
+        print("Test si l'ajout d'une piece dans la main fonctionne : ECHEC")
+        ret+=1
+    }
+    else{
+        print("OK si on ajoute une piece dans la main")
+    }
+    
     return ret
 }
 
@@ -130,28 +166,73 @@ func Ajouter_Piece_Test()->Int{
 func Supprimer_Piece_Test()->Int{
     var main = Hand()
     var piece_pas_dans_main = Piece()
-    
+    var piece = Piece()
+    main.Ajouter_Piece(piece:piece,(1,1))
     var ret : Int = 0
     do {
-        try {
-            //ici on verifie que la piece n'est pas dans la main mais on n'est pas oblige car a auccun moment on a ajouter la piece a la main et la main est initialise a vide donc la piece n'en fait forcement pas partie
-            if !main.Est_Dans_Main(piece:piece_pas_dans_main){
-                main.Supprimer_Piece(piece:piece_plateau,pos:(1,1))
-                print("Test si une piece qui n'est pas dans la main peut etre supprimer de la main a echoue")
-                ret+=1
-            }
-        }
+        try main.Supprimer_Piece(piece:piece_plateau,pos:(1,1))
+        print("Test si une piece qui n'est pas dans la main peut etre supprimer de la main a echoue")
+        ret+=1   
     }
     catch {
         print("OK si on essaye de supprimer une piece qui n'est pas dans la main")
+    }
+    main.Supprimer_Piece(piece:piece,pos:(1,1))
+    if main.Avoir_Piece(1,1)){
+        print("Test si supprimer une piece dans la main fonctionne : ECHEC")
+        ret+=1
+    }
+    else{
+        print("OK si on supprime une piece dans la main")
+    }
+    return ret
+}
+
+func Deplacer_Piece_Test()->Int{
+    var main = Hand()
+    var piece = Piece()
+    var piece_dans_main = Piece()
+    main.Ajouter_Piece(piece:piece_dans_main,(1,1))
+    var ret : Int = 0
+    do {
+        try main.Deplacer_Piece(piece:piece_dans_main,pos:(-1,-1))
+        print("Test si une piece peut etre deplacee a une position hors plateau: ECHEC")
+        ret+=1
+    }
+    catch {
+        print("OK si la position donnee n'est pas sur le tableau")
+    }
+    do {
+        try main.Deplacer_Piece(piece:piece,pos:(1,1))
+        print("Test si une piece qui n'est pas dans la main peut etre deplacee: ECHEC")
+        ret+=1
+    }
+    catch {
+        print("OK la piece n'est pas dans la main")
+    }
+    
+    main.Deplacer_Piece(piece:piece_dans_main,pos:(1,2))
+    if !main.Avoir_Piece(1,2)){
+        print("Test si deplacer une piece fonctionne : ECHEC")
+        ret+=1
+    }
+    else{
+        print("OK si on deplace une piece dans la main")
     }
     return ret
 }
 
 
+
+
+
+
 var nb_erreur : Int = 0
+nb_erreur+=Initialiser_Debut_Test()
 nb_erreur+=Est_Dans_Main_Test()
 nb_erreur+=Avoir_Piece_Test()
 nb_erreur+=Ajouter_Piece_Test()
 nb_erreur+=Supprimer_Piece_Test()
+nb_erreur+=Get_Piece_Test()
+nb_erreur+=Deplacer_Piece_Test()
 
