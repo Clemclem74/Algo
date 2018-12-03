@@ -335,6 +335,4 @@ func Transformer_Kodama() -> Int {
 
 	
 	
-func Deplacer_Piece_Test(){
-	
-}
+
