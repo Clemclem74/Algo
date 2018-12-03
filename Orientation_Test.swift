@@ -1,4 +1,4 @@
-Change_Orientation_Test(){
+func Change_Orientation_Test(){
 	var orientation = Orientation()
 	var piece = Piece()
     	var ret : Int = 0
