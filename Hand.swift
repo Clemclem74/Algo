@@ -1,4 +1,4 @@
-//Hand est une collection de pieces
+//Hand est une collection de pieces, elle correspond aux pieces que nous avons sur le plateau
 protocol HandProtocol: Sequence{
     associatedtype IteratorPiece : IteratorProtocol
         where IteratorPiece.Element == Piece
