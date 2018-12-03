@@ -1,3 +1,4 @@
+//L orientation est definie comme N pour Nord ou S pour Sud
 protocol OrientationProtocol:{
     //init: -> Orientation
     //cree un orientation initialisee a Vide
