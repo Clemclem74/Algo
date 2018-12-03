@@ -17,6 +17,16 @@ protocol PlateauProtocol:Sequence{
     //retourne le joueur 2 du plateau
     func Give_Joueur2()->Joueur
     
+    //Set_Joueur1: Plateau -> Joueur
+    //modifie le joueur1 du plateau
+    //Post: Le joueur1 du plateau est modifie
+    mutating func Set_Joueur1(joueur:Joueur)->Self
+    
+    //Set_Joueur2: Plateau -> Joueur
+    //modifie le joueur2 du plateau
+    //Post: Le joueur2 du plateau est modifie
+    mutating func Set_Joueur2(joueur:Joueur)->Self
+    
     //Est_Case_Vide: Plateau*Position -> (Bool|Vide)
     //Verifie si une position est vide ou pas
     //Pre: Position est dans le plateau (ne depasse pas la hauteur ou la largeur)
