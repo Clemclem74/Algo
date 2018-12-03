@@ -4,25 +4,19 @@ func Est_Vide_Test()->Int{
     var reserve_vide = Reserve()
     var reserve = Reserve()
     reserve.Ajouter_Piece(piece:piece)
-    
-    do {
-        try reserve_vide.Est_Vide()
-        if reserve.Est_Vide(){
+
+    if reserve.Est_Vide(){
           print("Test si une reserve non vide fonctionne a échoué")
           ret+=1
-        }
     }
-    catch {
+    else {
         print("OK si la reserve n'est pas vide")
     }
-    do {
-        try reserve_vide.Est_Vide()
-        if !reserve_vide.Est_Vide(){
-          print("Test si une reserve vide fonctionne a échoué")
-          ret+=1
-        }
+    if !reserve_vide.Est_Vide(){
+        print("Test si une reserve vide fonctionne : ECHEC")
+        ret+=1
     }
-    catch {
+    else {
         print("OK si la reserve est vide")
     }
     return ret
@@ -35,24 +29,19 @@ func Est_Dans_Reserve_Test()->Int{
     var reserve = Reserve()
     reserve.Ajouter_Piece(piece:piece_dans_reserve)
     
-    do {
-        try reserve.Est_Dans_Reserve(piece:piece_dans_reserve)
-        if !reserve.Est_Dans_Reserve(piece:piece_dans_reserve){
-          print("Test si le programme fonction lorsque la piece est dans la reserve: ECHEC")
-          ret+=1
-        }
+
+    if !reserve.Est_Dans_Reserve(piece:piece_dans_reserve){
+        print("Test si le programme fonction lorsque la piece est dans la reserve: ECHEC")
+        ret+=1
     }
-    catch {
+    else{
         print("OK si la piece est dans la reserve")
     }
-    do {
-        try reserve.Est_Dans_Reserve(piece:piece)
-        if reserve.Est_Dans_Reserve(piece:piece){
-          print("Test si le programme fonctionne lorsque la piece n'est pas dans la reserve: ECHEC")
-          ret+=1
-        }
+    if reserve.Est_Dans_Reserve(piece:piece){
+        int("Test si le programme fonctionne lorsque la piece n'est pas dans la reserve: ECHEC")
+        ret+=1
     }
-    catch {
+    else{
         print("OK si la piece n'est pas dans la reserve")
     }
     return ret
@@ -75,14 +64,12 @@ func Ajouter_Piece_Test()->Int{
     catch {
         print("OK si la piece n'a pas de position")
     }
-    do {
-        try reserve.Ajouter_Piece(piece:piece)
-        if!reserve.Est_Dans_Reserve(piece:piece){
-          print("Test si le programme fonctionne lorsque on ajoute une piece qui a une position: ECHEC")
-          ret+=1
-        }
+    reserve.Ajouter_Piece(piece:piece)
+    if!reserve.Est_Dans_Reserve(piece:piece){
+      print("Test si le programme fonctionne lorsque on ajoute une piece qui a une position: ECHEC")
+      ret+=1
     }
-    catch {
+    else {
         print("OK si on ajoute une piece avec une position")
     }
     return ret
@@ -117,15 +104,13 @@ func Get_Piece_Test()->Int{
     catch {
         print("OK si le type n'existe pas")
     }
-    do {
-        try pieceResult=reserve.Get_Piece(nom:type)
-        if!(pieceResult==piece){
-          print("Test si le programme fonctionne lorsque demande un piece a partir d'un type existant: ECHEC")
-          ret+=1
-        }
+    pieceResult=Get_Piece(nom:type)
+    if!(pieceResult==piece){
+       print("Test si le programme fonctionne lorsque demande un piece a partir d'un type existant: ECHEC")
+       ret+=1
     }
-    catch {
-        print("OK si le type existe")
+    else {
+       print("OK si le type existe")
     }
     return ret
 }
@@ -148,15 +133,13 @@ func Supprimer_Piece_Test()->Int{
     catch {
         print("OK si la piece n'est pas dans la reserve")
     }
-    do {
-        try reserve.Supprimer_Piece(piece:piece_dans_reserve)
-        if!reserve.Est_Vide(){
-          print("Test si le programme fonctionne lorsque on supprime une piece qui est dans la reserve: ECHEC")
-          ret+=1
-        }
+    reserve.Supprimer_Piece(piece:piece_dans_reserve)
+    if!reserve.Est_Vide(){
+       print("Test si le programme fonctionne lorsque on supprime une piece qui est dans la reserve: ECHEC")
+       ret+=1
     }
-    catch {
-        print("OK si on ajoute une piece avec une position")
+    else {
+       print("OK si on ajoute une piece avec une position")
     }
     return ret
 }
