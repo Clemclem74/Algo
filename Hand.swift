@@ -53,11 +53,6 @@ protocol HandProtocol: Sequence{
     mutating func Deplacer_Piece(piece : Piece,position : Position)->Self
     
     
-    
- ** // Set_Hand: Hand*Hand -> Hand
-    // Change la main d'un joueur
-    mutating func Set_Hand(newHand:Hand)->Self
-    
     // makeIteratorPiece : Hand -> IteratorPiece
     // cree un iterateur sur la collection dans l'odre (?Comment on les tries)
     func makeIteratorPiece()->IteratorPiece
