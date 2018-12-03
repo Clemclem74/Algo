@@ -1,5 +1,3 @@
-ATTENTION FAUX !!!!
-
 Change_Orientation_Test(){
 	var orientation = Orientation()
 	var piece = Piece()
