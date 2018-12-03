@@ -61,12 +61,12 @@ protocol PieceProtocol:{
     @discardableResult
     mutating func Transformer_Kodama_Samurai()->Self
 
-    //Transformer_Kodama: Hand*Piece -> Hand
-    //On transforme le kodama samura・en kodama
+    //Transformer_Kodama: Piece -> Piece
+    //On transforme le kodama samurai・en kodama
     //Pre: La piece doit etre un kodama et doit etre au fond du plateau et ne pas avoir ete parachutee directement au fond
     //Post: On transforme le kodama samourai en kodama. Si les preconditions ne sont pas remplies on ne fait rien.
     @discardableResult
-    mutating func Transformer_Kodama(piece:Piece)->Self
+    mutating func Transformer_Kodama()->Self
 
     //Deplacer_Piece: Piece*Position -> Piece
     //On deplace une piece jusqu'a une position finale.
