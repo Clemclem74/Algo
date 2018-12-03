@@ -101,7 +101,7 @@ func Set_Orientation_Test() -> Int {
 }
 
 
-func Give_Nom() -> Int {
+func Give_Nom_Test() -> Int {
 	var ret : Int = 0
 	var type_piece= TypePiece() //Crée un type inexistant
 	type_piece.Set_Nom(nom : "KoKiKo")
@@ -118,7 +118,7 @@ func Give_Nom() -> Int {
 }
 
 
-func Give_Position() -> Int {
+func Give_Position_Test() -> Int {
 	var piece = Piece()
 	var ret : Int = 0
 	var position_dispo = Position()
@@ -135,7 +135,7 @@ func Give_Position() -> Int {
     	return ret
 }
 
-func Give_Orientation() -> Int {
+func Give_Orientation_Test() -> Int {
 	var orientation = Orientation()
 	var piece = Piece()do {
         try main.Est_Dans_Main(type:type_piece_inexistant)
@@ -335,4 +335,19 @@ func Transformer_Kodama() -> Int {
 
 	
 	
-
+	
+	
+	
+	
+var nb_erreur : Int =0
+nb_erreur+=Set_Type_Test()
+nb_erreur+=Set_Position_Test()
+nb_erreur+=Set_Orientation_Test()
+nb_erreur+=Give_Nom_Test()
+nb_erreur+=Give_Position_Test()
+nb_erreur+=Give_Orientation_Test()
+nb_erreur+=Est_Kodama_Test()
+nb_erreur+=Est_Kodama_Samourai_Test()
+nb_erreur+=Est_Roi_Test()
+nb_erreur+=Transformer_Kodama_Samourai()
+nb_erreur+=Transformer_Kodama()
