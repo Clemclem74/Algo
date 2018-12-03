@@ -23,6 +23,7 @@ protocol ReserveProtocol:Sequence{
     //Get_Piece: Hand*Position -> (Piece | Vide)
     //Verifie si a un type donne il y a une piece de la reserve qui appartient a ce type et si c'est le cas on ressort la piece ou Vide
     //En cas de plusieurs occurences, on ressortira la premiere
+    //Pre: Il faut que ce soit un type existant
     //Post: Retourne vrai si il possede une piece faux sinon
     func Get_Piece(nom:TypePiece) -> Piece?
     
