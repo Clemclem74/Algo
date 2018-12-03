@@ -115,46 +115,46 @@ while !fin_de_partie {
     tour_effectue=false
     //Changement du joueur et donc de l'adversaire à chaque tour 
     if tour%2==1{
-        var joueur:Joueur = plat.j1
-        var adversaire:Joueur = plat.j2
+        var joueur:Joueur = plat.Give_Joueur1()
+        var adversaire:Joueur = plat.Give_Joueur2()
     }
     else {
-        var joueur:Joueur = plat.j2
-        var adversaire:Joueur = plat.j1
+        var joueur:Joueur = plat.Give_Joueur1()
+        var adversaire:Joueur = plat.Give_Joueur2()
     }
     //Vérification que la partie n'est pas finie, donc les deux joueurs possèdent un roi et qu'il n'est pas sur la dernière ligne.
-    if(plat.fin()!= nil){
+    if(plat.Fin()!= nil){
         tour_effeectue=true
         fin_de_partie=true
     }
     //On crée le while pour vérifier que le tour est effectué (créé dans des cas où le joueur veut avoir accès à sa réserve mais qu'elle est vide), on redemandera alors le choix du début
     while(!tour_effectue){
-        //on affiche le plateau et la réserve pour demander à l'utilisateur ce qu'il veut faire
-        afficherPlateau(plat)
-        afficherReserve(joueur)
         action=demander_action()
         
         //Si le joueur veut se déplacer
         if action == "Deplacer" {
             do{
-                piece = saisir_piece_a_deplacer(main : joueur.Give_Hand)
-                positionFinale = saisir_position_finale()
-            } while(!plat.est_deplacement_possible(piece,positionFinale))
+                piece = Saisir_Piece_A_Deplacer(main : joueur.Give_Hand())
+                positionFinale = Saisir_Position_Finale()
+            } while(!plat.Est_Deplacement_Possible(piece,positionFinale))
             //Un deplacement n'est pas possible si la piece sort du plateau, si une piece nous appartenant est à cette place ou si ce deplacement n'est pas autorisé par les caractéristiques de la piece
             
-            if (adversaire.GiveHand.avoir_piece(positionFinale)){
+            if (adversaire.Give_Hand.Avoir_Piece(positionFinale)){
                 //capturer une piece
-                piece_a_capturer = plat.PiecePosition(positionFinale)
-                adversaire.GiveHand.supprimer_piece(piece_a_capturer)
-                if estKodamaSamourai(piece_a_capturer){
-                    joueur.GiveHand.transformer_Kodama(piece_a_capturer)
+                piece_a_capturer = adversaire.Get_Piece(positionFinale)
+                
+                adversaire.Give_Hand.Supprimer_Piece(piece:piece_a_capturer)
+                if Est_Kodama_Samourai(piece_a_capturer){
+                    joueur.Give_Hand.Transformer_Kodama(piece:piece_a_capturer)
                 }
-                joueur.GiveReserve.ajouter_piece(piece_a_capturer)
+                var tmp : reserve = joueur.Give_Hand()
+                reserve.Ajouter_Piece(piece : piece_a_capturer)
+                joueur.Set_Reserve(reserve : reserve)
             }
             joueur.GiveHand.Deplacer_Piece(piece,positionFinale)
-            if estKodama(piece){
-                if (joueur.GiveHand.est_au_fond(piece)){
-                    joueur.GiveHand.transformer_KodamaSamourai(piece)
+            if estKodama(piece:piece){
+                if (joueur.Give_Hand.Est_Au_Fond(piece:piece)){
+                    joueur.Give_Hand.transformer_KodamaSamourai(piece:piece)
                 }
             }
             tour_effectue=true
@@ -177,8 +177,8 @@ while !fin_de_partie {
     
     
     if tour%2==1{
-        plat.j1=joueur
-        plat.j2=adversaire
+        plat.Set_Joueur1(joueur:joueur)
+        plat.Set_Joueur2(joueur:adversaire)
     }
     else {
         plat.j2=joueur
