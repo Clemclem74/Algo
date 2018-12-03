@@ -86,7 +86,7 @@ func Est_Case_Vide_Test(){
 	plateau.Set_Joueur1(joueur:joueur)
 			   
 	do{
-		try Est_Case_Vide(pos:(-1,-1))
+		try palt.Est_Case_Vide(pos:(-1,-1))
 		print("Le test pour regarder si le programme fonctionne avec une position hors plateau a echoue")
 		ret+=1
 	}
