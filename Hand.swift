@@ -23,7 +23,7 @@ protocol HandProtocol: Sequence{
     func Avoir_Piece(pos:Postion)->Bool
     
     //Get_Piece: Hand*Position -> (Piece | Vide)
-    //Verifie si a un position donnee il y a une piece de la main qui occupe cette position et si c'est le cas on ressort la piece ou Vide
+    //Verifie si a une position donnee il y a une piece de la main qui occupe cette position et si c'est le cas on ressort la piece ou Vide
     //Post: Retourne vrai si il possede une piece faux sinon
     func Get_Piece(pos:Postion) -> Piece?
     
