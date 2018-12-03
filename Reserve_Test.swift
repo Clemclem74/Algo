@@ -86,7 +86,7 @@ func Get_Piece_Test()->Int{
     type.Set_Nom(nom:"kodama")
     type_inexistant.Set_Nom(nom:"kokiko")
     piece.Set_Type(type:type)
-    piece_type_inexistant(type:type_inexistant)
+    piece_type_inexistant.Set_Type(type:type_inexistant)
     piece.Set_Position(newPos:(1,1))
     piece_type_inexistant.Set_Position(newPos:(1,1))
     
@@ -104,7 +104,7 @@ func Get_Piece_Test()->Int{
     catch {
         print("OK si le type n'existe pas")
     }
-    pieceResult=Get_Piece(nom:type)
+    pieceResult=reserve.Get_Piece(nom:type)
     if!(pieceResult==piece){
        print("Test si le programme fonctionne lorsque demande un piece a partir d'un type existant: ECHEC")
        ret+=1
