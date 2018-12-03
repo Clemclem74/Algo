@@ -18,6 +18,14 @@ protocol ReserveProtocol:Sequence{
     //Pre: La piece n’a pas de position (est de type TypePiece*Vide)
     //Post: Si la piece est dans la reserve on retourne vrai sinon on retourne faux.
     func Est_Dans_Reserve(piece:Piece)->Bool
+    
+    
+    //Get_Piece: Hand*Position -> (Piece | Vide)
+    //Verifie si a un type donne il y a une piece de la reserve qui appartient a ce type et si c'est le cas on ressort la piece ou Vide
+    //En cas de plusieurs occurences, on ressortira la premiere
+    //Post: Retourne vrai si il possede une piece faux sinon
+    func Get_Piece(nom:TypePiece) -> Piece?
+    
      
     //Ajouter_Piece: Reserve*Piece -> Reserve
     //Ajoute une piece de la reserve et remplace sa position par Vide
