@@ -134,9 +134,13 @@ func Piece_Position_Test(){
 	return ret
 }
 	
-
-
-
+var nb_erreur : Int =0
+nb_erreur+=Give_Joueur1_Test()
+nb_erreur+=Give_Joueur2_Test()
+nb_erreur+=Set_Joueur1_Test()
+nb_erreur+=Set_Joueur2_Test()
+nb_erreur+=Est_Case_Vide_Test()
+nb_erreur+=Piece_Position_Test()
 
 
 
