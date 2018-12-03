@@ -9,16 +9,18 @@ protocol HandProtocol: Sequence{
 
     // Initialiser_Debut : Hand -> Hand
     // Initialisation de la main avec les 4 pieces du debut
+    //Post: La main est maintenant composee des 4 pieces du debut et elles sont a leur position initiale
     func Initialiser_Debut()->Self
     
     //Est_Dans_Main: Hand*TypePiece -> Bool
     //Regarde si il y a un type de piece dans la main
-    //Pre: Ce type existe
+    //Pre: Ce type existe (kodama, kitsune ...)
     //Post: Si il y a cette piece dans la main on retourne Vrai sinon on retourne Faux
     func Est_Dans_Main(type:TypePiece)->Bool
     
     //Avoir_Piece: Hand*Position -> Bool
     //Verifie si a un position donnee il y a une piece de la main qui occupe cette position
+    //Pre: La position est sur le plateau
     //Post: Retourne vrai si il possede une piece faux sinon
     func Avoir_Piece(pos:Postion)->Bool
     
@@ -48,7 +50,7 @@ protocol HandProtocol: Sequence{
     //Deplace une piece de la main. Elle va d'abord verifier que l'on a la piece, que le deplacement est possible par 
     //rapport aux caracteristiques de la piece puis va deplacer la piece.
     //Pre : La piece doit faire partie de la main du joueur, la position doit être une position valable
-    //La piece a ete deplacee, 
+    //Post : La piece a ete deplacee.
     @discardableResult
     mutating func Deplacer_Piece(piece : Piece,position : Position)->Self
     
