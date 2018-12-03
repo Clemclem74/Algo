@@ -43,6 +43,16 @@ protocol HandProtocol: Sequence{
     @discardableResult
     mutating func Supprimer_Piece(piece:Piece)->Self
 
+    //Deplacer_Piece: Hand*Piece*Position -> Hand
+    //Deplace une piece de la main. Elle va d'abord verifier que l'on a la piece, que le deplacement est possible par 
+    //rapport aux caracteristiques de la piece puis va deplacer la piece.
+    //Pre : La piece doit faire partie de la main du joueur, la position doit être une position valable
+    //La piece a ete deplacee, 
+    @discardableResult
+    mutating func Deplacer_Piece(piece : Piece,position : Position)->Self
+    
+    
+    
  ** // Set_Hand: Hand*Hand -> Hand
     // Change la main d'un joueur
     mutating func Set_Hand(newHand:Hand)->Self
