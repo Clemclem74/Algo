@@ -1,4 +1,4 @@
-//Reserve est une collection de Piece car ce sont des pieces qui n'ont pas encore de position car elles ne sont pas sur le plateau 
+//Reserve est une collection de Piece ce sont des pieces qui n'ont pas encore de position car elles ne sont pas sur le plateau 
 protocol ReserveProtocol:Sequence{
     associatedtype IteratorPiece : IteratorProtocol
         where IteratorPiece.Element == Piece
