@@ -1,4 +1,4 @@
-Piece= TypePiece*Position*Orientation
+// Une piece est definie par un TypePiece, une position et une Orientation
 protocol PieceProtocol:{
     //init: -> Piece
     //creation d'une piece definie par son type, sa position et son orientation. On initialise cette piece a Vide.
