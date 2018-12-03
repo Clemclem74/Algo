@@ -79,7 +79,7 @@ func Changer_Noms_Joueurs(plat:Plateau){
         joueur.Set_Name(nom:"Joueur 1")
         plat.Set_Joueur_1(joueur:joueur)
     }
-    joueur.CSet_Name(nom:l1)
+    joueur.Set_Name(nom:l1)
     plat.Set_Joueur_1(joueur:joueur)
     }
     print("Quel est le nom du deuxième joueur ?")
@@ -143,18 +143,30 @@ while !fin_de_partie {
                 //capturer une piece
                 piece_a_capturer = adversaire.Get_Piece(positionFinale)
                 
-                adversaire.Give_Hand.Supprimer_Piece(piece:piece_a_capturer)
-                if Est_Kodama_Samourai(piece_a_capturer){
-                    joueur.Give_Hand.Transformer_Kodama(piece:piece_a_capturer)
+                //Suppression dans le jeu adverse
+                var tmp2: Hand = adversaire.Give_Hand()
+                tmp.Supprimer_Piece(piece : piece_a_capturer)
+                adversaire.Set_Reserve(reserve : tmp2)
+                
+               
+                if Est_Kodama_Samourai(piece:piece_a_capturer){
+                    
+                    piece_a_capturer.Transformer_Kodama()
                 }
-                var tmp : reserve = joueur.Give_Hand()
-                reserve.Ajouter_Piece(piece : piece_a_capturer)
-                joueur.Set_Reserve(reserve : reserve)
+                
+                //Ajout dans notre Reserve
+                
+                var tmp : Reserve = joueur.Give_Reserve()
+                tmp.Ajouter_Piece(piece : piece_a_capturer)
+                joueur.Set_Reserve(reserve : tmp)
             }
-            joueur.GiveHand.Deplacer_Piece(piece,positionFinale)
+            
+                      
+            
+            piece.Deplacer_Piece(posFin:positionFinale)
             if estKodama(piece:piece){
-                if (joueur.Give_Hand.Est_Au_Fond(piece:piece)){
-                    joueur.Give_Hand.transformer_KodamaSamourai(piece:piece)
+                if (piece.Est_Au_Fond()){
+                    piece.transformer_KodamaSamourai()
                 }
             }
             tour_effectue=true
@@ -168,8 +180,16 @@ while !fin_de_partie {
                     positionFinale = saisir_position_finale()
                 } while(!est_vide(positionFinale))
                 //Un parachutage est possible uniquement si la case est vide 
-                joueur.GiveHand.ajouter_piece(piece)
-                joueur.GiveHand.supprimer_piece(piece)
+                //Ajout a notre main
+                var tmp3 : Hand = joueur.Give_Hand()
+                tmp.Ajouter_Piece(piece : piece_a_capturer)
+                joueur.Set_Hand(newHand : tmp3)
+                
+                //On enleve de la reserve
+                var tmp4 : Reserve = joueur.Give_Reserve()
+                tmp.Supprimer_Piece(piece : piece_a_capturer)
+                joueur.Set_Reserve(reserve : tmp4)
+
                 tour_effectue = true
             }
         }
@@ -181,8 +201,8 @@ while !fin_de_partie {
         plat.Set_Joueur2(joueur:adversaire)
     }
     else {
-        plat.j2=joueur
-        plat.j1=adversaire
+        plat.Set_Joueur2(joueur:joueur)
+        plat.Set_Joueur2(joueur:adversaire)
     }
     tour = tour + 1
 }
