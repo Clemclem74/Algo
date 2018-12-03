@@ -26,7 +26,7 @@ protocol PieceProtocol:{
 
     //Give_Nom: Piece -> TypePiece
     //Retourne le nom (Type) d置ne piece
-    func Give_Nom()->TypePiece
+    func Give_Type()->TypePiece
     
     //Give_Position: Piece -> (Position|Vide)
     //Retourne la position d置ne piece
