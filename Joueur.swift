@@ -1,3 +1,4 @@
+// Un joueur est definie par un nom, sa main et sa reserve
 protocol JoueurProtocol: {
 
     // init:  String -> Joueur
