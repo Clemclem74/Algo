@@ -15,7 +15,6 @@ protocol ReserveProtocol:Sequence{
 
     //Est_Dans_Reserve: Reserve*Piece -> Bool
     //Regarde si il y a une piece dans la reserve
-    //Pre: La piece n’a pas de position (est de type TypePiece*Vide)
     //Post: Si la piece est dans la reserve on retourne vrai sinon on retourne faux.
     func Est_Dans_Reserve(piece:Piece)->Bool
     
