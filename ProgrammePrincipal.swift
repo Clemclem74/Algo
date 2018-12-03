@@ -9,12 +9,6 @@ import Reserve
 import TypePiece
 
 
-func Deplacer(plat:Plateau,joueur:Joueur)->Plateau
-
-
-
-
-
 
 func Saisir_Position_Finale()->Position {
     var pos = Position()
@@ -76,6 +70,31 @@ func Saisir_Piece_A_Parachuter(reserve : Reserve)->Piece{
 }
 
 
+func Changer_Noms_Joueurs(plat:Plateau){
+    var joueur : Joueur
+    var l : String?
+    print("Quel est le nom du premier joueur ?")
+    l = readLine()
+    guard let l1 : String = l else {
+        joueur.Set_Name(nom:"Joueur 1")
+        plat.Set_Joueur_1(joueur:joueur)
+    }
+    joueur.CSet_Name(nom:l1)
+    plat.Set_Joueur_1(joueur:joueur)
+    }
+    print("Quel est le nom du deuxième joueur ?")
+    l = readLine()
+    guard let l2 : String = l else {
+        joueur.Set_Name(nom:"Joueur 2")
+        plat.Set_Joueur_1(joueur:joueur)
+    }
+    joueur.CSet_Name(nom:l2)
+    plat.Set_Joueur_2(joueur:joueur)
+    }
+}
+
+
+
 
 var plat = Plateau()        //Initialisation du plateau 
 //Initialisation des joueurs :  A l'initialisation, les 
@@ -87,19 +106,10 @@ var tour : Int = 1
 var positionFinale : Position
 var tour_effectue : Bool 
 var fin_de_partie : Bool = false
-    //Gestion de la déclaration du nom des joueurs. Si le nom reste vide on attribuera Joueur 1 et Joueur 2
-print("Quel est le nom du premier joueur ?")
-var l : String? = readLine()
-guard let l1 = l else {
-    plat.j1.ChangeName("Joueur 1")
-}
-print("Quel est le nom du deuxième joueur ?")
-l = readLine()
-guard let l2 = l else {
-    plat.j2.ChangeName("Joueur 2")
-}
-plat.j1.name = l1
-plat.j2.name = l2
+var joueur = Joueur()
+
+//Gestion de la déclaration du nom des joueurs. Si le nom reste vide on attribuera Joueur 1 et Joueur 2
+Changer_Noms_Joueurs(plat:plat)
 
 while !fin_de_partie {
     tour_effectue=false
