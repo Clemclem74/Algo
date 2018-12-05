@@ -35,7 +35,7 @@ protocol PieceProtocol:{
     //Retourne la position d'une piece
     //Pre: La piece doit etre sur le plateau
     //Post: Si la piece est sur le plateau on retourne sa position sinon on retourne Vide(Si la piece est dans la reserve par exemple)
-    func Give_Position()->?Position
+    func Give_Position()->Position?
 
     //Give_Orientation: Piece -> Orientation
     //Retourne l'orientation d'une piece
