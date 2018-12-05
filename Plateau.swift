@@ -29,11 +29,11 @@ protocol PlateauProtocol:Sequence{
     //Post: Le joueur2 du plateau est modifie
     mutating func Set_Joueur2(joueur:Joueur)->Self
     
-    //Est_Case_Vide: Plateau*Position -> (Bool|Vide)
+    //Est_Case_Vide: Plateau*Position -> Bool
     //Verifie si une position est vide ou pas
     //Pre: Position est dans le plateau (ne depasse pas la hauteur ou la largeur)
-    //Post: Retourne Vrai si il n'y a pas de piece a cette position, faux si la case est occupee. Si jamais la position entree en parametre n'est pas sur le plateau on retourne Vide.
-    func Est_Case_Vide(pos:Position)->?Bool
+    //Post: Retourne Vrai si il n'y a pas de piece a cette position, faux si la case est occupee. Si jamais la position entree en parametre n'est pas sur le plateau on retourne une erreur.
+    func Est_Case_Vide(pos:Position)->Bool
     
     //Est_Deplacement_Possible: Plateau*Piece*Position
     //Verifie si un piece peut se deplacer a un position donnee
@@ -48,7 +48,7 @@ protocol PlateauProtocol:Sequence{
     //Pre:Il y a une piece sur cette position
     //Pre:La position est dans le plateau
     //Post: Retourne la piece. Si jamais la position n'est pas sur la plateau ou si il n'y a pas de piece a cette position on retourne Vide.
-    func Piece_Position(pos:Position)->?Piece
+    func Piece_Position(pos:Position)->Piece?
     
     //Fin: Plateau -> (Joueur | Vide)
     //Regarde si la partie est finie.
