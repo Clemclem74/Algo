@@ -207,6 +207,7 @@ while !fin_de_partie {
     tour = tour + 1
 }
 let joueur_gagnant=plat.fin()
-print("Le joueur %s a gagné",joueur_gagnant.GiveName())
+let annonce = "Le joueur" + joueur_gagnant.GiveName() + "a gagné"
+print(annonce)
 exit()
 }
